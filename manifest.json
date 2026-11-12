@@ -1,14 +1,15 @@
 {
   "manifest_version": 3,
   "name": "YouTube 2x Speed Booster",
-  "version": "1.0",
-  "description": "Automatically sets YouTube videos to 2x speed",
+  "version": "1.1",
+  "description": "Automatically sets YouTube videos to 2x speed (music videos stay at 1x)",
   "permissions": ["activeTab"],
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],
       "js": ["content.js"],
-      "run_at": "document_end"
+      "run_at": "document_end",
+      "world": "MAIN"
     }
   ]
 }
