@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube 2x Speed Booster",
+  "version": "1.0",
+  "description": "Automatically sets YouTube videos to 2x speed",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
