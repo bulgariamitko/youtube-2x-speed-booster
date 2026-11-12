@@ -1,10 +1,11 @@
 # YouTube 2x Speed Booster
 
-A Chrome extension that automatically sets YouTube videos to play at 2x speed.
+A Chrome extension that automatically sets YouTube videos to play at 2x speed, while music videos always play at normal (1x) speed.
 
 ## Features
 
-- Automatically sets all YouTube videos to 2x speed
+- Automatically sets YouTube videos to 2x speed
+- Music videos always play at normal 1x speed
 - Works with dynamically loaded videos
 - Handles YouTube's single-page application navigation
 - Prevents manual speed changes from reverting
@@ -32,12 +33,23 @@ The extension uses:
 - Event listeners to maintain 2x speed across video state changes
 - URL change detection for YouTube's SPA navigation
 
+## Music video detection
+
+A video is treated as music (played at 1x) when:
+
+- It is on YouTube Music (`music.youtube.com`), or
+- YouTube's player data lists its category as **Music**, or (as a fallback)
+- The description has a Music section, the channel has the Official Artist Channel badge, or the channel name ends in `- Topic` or `VEVO`
+
+The content script runs in the page's `MAIN` world so it can read the player's video category.
+
 ## Customization
 
 To change the playback speed, modify the `TARGET_SPEED` constant in `content.js`:
 
 ```javascript
 const TARGET_SPEED = 2.0; // Change this to your desired speed
+const MUSIC_SPEED = 1.0;  // Speed for music videos
 ```
 
 ## Permissions
